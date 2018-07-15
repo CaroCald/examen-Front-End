@@ -1,3 +1,39 @@
-<p>
-  usuario works!
-</p>
+<div class="container" style="margin-bottom: 30px">
+  <div class="row ">
+    <div class="input-group mb-2">
+      <input type="text" class="form-control" placeholder="Buscar" aria-label="Buscar" aria-describedby="buscar">
+      <div class="input-group-append">
+        <button type="button"  id="buscar" class="btn btn-primary">
+          <i class="fas fa-search"> </i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-bottom: 20px">
+  <div class="row" style="margin-left: 12px">
+    <div class="col-sm-3" *ngFor="let info of usuario" style="margin-bottom: 15px; width: 100%; height: 10%" >
+<app-card-usuario
+[urlImagen]="info.urlUsuario"
+[nombre]="info.nombreUsuario"
+></app-card-usuario>
+      <button type="button" class="btn btn-secondary" (click)="seleccionar()">Visitar</button>
+    </div>
+  </div>
+</div>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li [class]="class">
+      <a class="page-link" (click)="primero()" tabindex="-1" >Previous</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" (click)="mostrar()">Next</a>
+    </li>
+  </ul>
+</nav>
+
+<app-paciente></app-paciente>
+<app-medicamento></app-medicamento>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Paciente } from '../paciente/paciente.service';
 import { HttpClient } from '@angular/common/http';
 
@@ -10,13 +10,16 @@ import { HttpClient } from '@angular/common/http';
 export class CardPacienteComponent implements OnInit {
 
   paciente:Paciente[];
+  class='page-item';
 
   constructor(private http: HttpClient) { }
-
+  @Input() urlImagen: string;
+  @Input() nombre: string;
+  @Input() apellido: string;
+  @Input() edad: number;
   ngOnInit() {
-    this.http.get<Paciente[]>('http://localhost:3000/Paciente').subscribe((data: Paciente[]) => {
-      this.paciente = data;
-    });
+    this.class=this.class+' '+'disable'
+
   }
 
   seleccionar(){

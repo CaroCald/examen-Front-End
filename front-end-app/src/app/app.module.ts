@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CardUsuarioComponent } from './card-usuario/card-usuario.component';
@@ -19,6 +18,7 @@ import { SeleccionTransferenciaComponent } from './seleccion-transferencia/selec
 import { PerfilComponent } from './perfil/perfil.component';
 import { PacienteServiceApp } from './paciente/paciente.service';
 import { UsuarioService } from './usuario/usuario.service';
+import {ServicioApp} from "./Servicios/servicio.app";
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { UsuarioService } from './usuario/usuario.service';
       }
     )
   ],
-  providers: [PacienteServiceApp, UsuarioService],
+  providers: [PacienteServiceApp, UsuarioService, ServicioApp],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,47 +1,31 @@
 <h3 style="text-align: center">PETICION DE TRANSFERENCIA</h3>
 <div class="container">
-  <div class="col-sm-6">
-    <div class="container" style="margin-bottom: 20px">
-      <div class="row" style="margin-left: 12px">
-        <div class="col-sm-4" style="margin-bottom: 15px" >
-          <div class="card" style="width: 18rem">
-            <div class="container">
-              <img src="" alt="" style="width: 100px; height: 100px; align-content: center; margin-top: 10px; margin-left: 25px">
-            </div>
-            <div class="card-body">
-              <p style="text-align: center">Nombres: </p>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <app-card-usuario
+        [urlImagen]="usuario[0].urlUsuario"
+        [nombre]="usuario[0].nombreUsuario"
+      ></app-card-usuario>
+    </div>
+    <div class="col-sm-6">
+      <h3>Item de Seleccion</h3>
+      <app-card-medicamento
+        [urlImagen]="medicamento[0].urlMedicamento"
+        [nombre]="medicamento[0].nombre"
+        [usadoPara]="medicamento[0].usadoPara"
+      ></app-card-medicamento>
     </div>
   </div>
-  <div class="col-sm-6">
-    <div class="container" style="margin-bottom: 20px">
-      <div class="row" style="margin-left: 12px">
-        <div class="col-sm-6" style="margin-bottom: 15px" >
-          <div class="card" style="width: 18rem">
-            <div class="container">
-              <img src="" alt="" style="width: 100px; height: 100px; align-content: center; margin-top: 10px; margin-left: 25px">
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-4">
-                  <p style="text-align: center">Nombres: </p>
-
-                </div>
-                <div class="col-sm-4">
-                  <p style="text-align: center">Apellido: </p>
-                </div>
-                <div class="col-sm-4">
-                  <p style="text-align: center">Edad: </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+</div>
+<div class="container" style="margin-bottom: 20px">
+  <div class="row" style="margin-left: 12px">
+    <div class="col-sm-3" *ngFor="let info of medicamento" style="margin-bottom: 15px; width: 100%; height: 10%" >
+      <app-card-medicamento
+        [urlImagen]="info.urlMedicamento"
+        [nombre]="info.nombre"
+        [usadoPara]="info.usadoPara"
+      ></app-card-medicamento>
+      <button type="button" class="btn btn-secondary" (click)="seleccionar()">Pedir Transferencia</button>
     </div>
-
   </div>
 </div>

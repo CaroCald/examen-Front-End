@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {User, UsuarioService} from "./usuario.service";
+import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-usuario',
@@ -7,9 +10,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsuarioComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private http: HttpClient, private _router: Router, private usuarioService:UsuarioService) { }
+  usuario:User[];
+  nombre;
+  class='page-item';
+
 
   ngOnInit() {
+    this.primero();
+
+  }
+
+  primero(){
+    this.usuarioService.cargarPrimerosUsuario().subscribe((data: User[]) => {
+      this.usuario = data;
+    });
+  }
+
+  seleccionar(){
+
+    let url=['/transferir'];
+    this._router.navigate(url)
+
+  }
+
+  mostrar(){
+    this.usuarioService.getTodo().subscribe((data: User[]) => {
+      this.usuario = data;
+    });
+    this.class=this.class+' '+'enable'
   }
 
 }

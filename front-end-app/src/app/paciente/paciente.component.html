@@ -1,3 +1,23 @@
-<p>
-  paciente works!
-</p>
+<div class="container" style="margin-bottom: 20px">
+  <div class="row" style="margin-left: 12px">
+    <div class="col-sm-6" *ngFor="let info of paciente" style="margin-bottom: 15px; width: 100%; height: 10%" >
+      <app-card-paciente
+        [urlImagen]="info.urlPaciente"
+        [nombre]="info.nombre"
+        [apellido]="info.apellido"
+        [edad]="info.edad"
+      ></app-card-paciente>
+    </div>
+  </div>
+</div>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li [class]="class">
+      <a class="page-link" (click)="cargar()" tabindex="-1" >Previous</a>
+    </li>
+    <li class="page-item">
+      <a class="page-link" (click)="cargarMas()">Next</a>
+    </li>
+  </ul>
+</nav>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {medicamentos} from "../medicamento/medicamento.servicio";
 import {HttpClient} from "@angular/common/http";
 
@@ -9,19 +9,20 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CardMedicamentoComponent implements OnInit {
 
+  @Input()nombre;
+  @Input()urlImagen;
+  @Input()usadoPara;
   medicamento:medicamentos[];
-  contador=0;
+
+  class='page-item';
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get<medicamentos[]>('http://localhost:3000/Medicamento').subscribe((data: medicamentos[]) => {
-        this.medicamento = data;
-    });
-  }
 
-
-  seleccionar(){
+    this.class=this.class+' '+'disable';
 
   }
+
+
 }
