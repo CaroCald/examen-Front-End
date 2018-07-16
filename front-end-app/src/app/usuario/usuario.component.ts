@@ -28,10 +28,11 @@ export class UsuarioComponent implements OnInit {
     });
   }
 
-  seleccionar(){
+  seleccionar(indice){
 
     let url=['/transferir'];
-    this._router.navigate(url)
+    this._router.navigate(url);
+    console.log(indice);
 
   }
 
