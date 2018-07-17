@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {medicamentos} from "./medicamento.servicio";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {ServicioApp} from "../Servicios/servicio.app";
 
 @Component({
   selector: 'app-medicamento',
@@ -13,14 +14,14 @@ export class MedicamentoComponent implements OnInit {
 
   class = 'page-item';
 
-  constructor(private http: HttpClient, private router:Router) {
+  constructor(private http: HttpClient, private router:Router, private service:ServicioApp) {
   }
 
   ngOnInit() {
 
     this.class = this.class + ' ' + 'disable';
-    this.cargar()
-
+    this.cargar();
+    this.escucharCambiosBusqueda();
   }
 
   cargar() {
@@ -32,6 +33,10 @@ export class MedicamentoComponent implements OnInit {
   cargarMas() {
     this.http.get<medicamentos[]>('http://localhost:3000/siguieneMedicamentos').subscribe((data: medicamentos[]) => {
       this.medicamento = data;
+    });
+  }
+  escucharCambiosBusqueda(){
+    this.service.emitirMedicamento.subscribe((autos) => {this.medicamento= autos;
     });
   }
 
