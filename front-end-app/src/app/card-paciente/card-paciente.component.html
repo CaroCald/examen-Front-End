@@ -1,21 +1,17 @@
 <div class="container" style="margin-bottom: 20px">
       <div class="card" style="width: 22rem">
-        <div class="container">
-          <img src={{urlImagen}} alt="" style="width: 100px; height: 100px; align-content: center; margin-top: 10px; margin-left: 25px">
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-4">
-              <p style="text-align: center; font-size: small">{{nombre}} </p>
-            </div>
-            <div class="col-sm-4">
-              <p style="text-align: center; font-size: small">{{apellido}}</p>
-            </div>
-            <div class="col-sm-4">
-              <p style="text-align: center;font-size: small">Edad: {{edad}}</p>
-            </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <img src={{urlImagen}} alt="" style="width: 100px; height: 100px; align-content: center; margin-top: 10px; margin-left: 20px">
           </div>
+          <div class="col-sm-6" >
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">{{nombre}}</li>
+              <li class="list-group-item">{{apellido}}</li>
+              <li class="list-group-item">Edad: {{edad}}</li>
+            </ul>
         </div>
+          </div>
       </div>
     </div>
 

@@ -12,29 +12,29 @@
   </div>
 </div>
 
-<div class="container" style="margin-bottom: 20px">
+<div class="container" style="margin-bottom: 20px" *ngIf="mostrarComponentes">
   <div class="row" style="margin-left: 12px">
-    <div class="col-sm-3" *ngFor="let info of usuario; let indice=index" style="margin-bottom: 15px; width: 100%; height: 10%" >
-<app-card-usuario
+    <div class="col-sm-3" *ngFor="let info of usuario; let indice=index" style="margin-bottom: 20px; width: 100%; height: 10%" >
+<app-card-usuario *ngIf="mostrarComponentes"
 [urlImagen]="info.urlUsuario"
 [nombre]="info.nombreUsuario"
 ></app-card-usuario>
-      <button type="button" class="btn btn-secondary" (click)="seleccionar(indice)">Visitar</button>
+      <button type="button" class="btn btn-secondary btn-block" (click)="seleccionar(indice)" *ngIf="mostrarComponentes">Visitar</button>
     </div>
   </div>
 </div>
 
 
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
+<nav aria-label="Page navigation example" *ngIf="mostrarComponentes">
+  <ul class="pagination justify-content-center pagination-lg">
     <li [class]="class">
-      <a class="page-link" (click)="primero()" tabindex="-1" >Previous</a>
+      <a class="page-link" (click)="primero(param)" tabindex="-1">Anteriores 4 </a>
     </li>
-    <li class="page-item">
-      <a class="page-link" (click)="mostrar()">Next</a>
+    <li [class]="class2">
+      <a class="page-link" (click)="mostrar(param)" >Siguientes 4</a>
     </li>
   </ul>
 </nav>
 
-<app-paciente></app-paciente>
-<app-medicamento></app-medicamento>
+<app-paciente *ngIf="mostrarComponentes"></app-paciente>
+<app-medicamento *ngIf="mostrarComponentes"></app-medicamento>

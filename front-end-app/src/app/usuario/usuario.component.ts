@@ -18,28 +18,32 @@ export class UsuarioComponent implements OnInit {
   usuario:User[];
   paciente: Paciente[];
   nombre;
+  mostrarComponentes=false;
   class='page-item';
+  class2='page-item';
 param;
   ngOnInit() {
-    this.primero();
+    this.class=this.class+' disabled'
   }
 
 
-  primero(){
-    this.usuarioService.cargarPrimerosUsuario().subscribe((data: User[]) => {
-      this.usuario = data;
-      console.log(data);
+  primero(parametro){
+    this.usuarioService.buscar(parametro, 0, 4).subscribe((data:User[])=>{
+      this.usuario=data;
     });
+    this.class=this.class+' disabled';
+    this.class2='page-item';
   }
 
   retomarBusqueda(parametro){
-    this.usuarioService.buscar(parametro).subscribe((data:User[])=>{
+    this.mostrarComponentes=true;
+    this.usuarioService.buscar(parametro, 0, 4).subscribe((data:User[])=>{
       this.usuario=data;
     });
-    this.usuarioService.buscarPaciente(parametro).subscribe((data:Paciente[])=>{
+    this.usuarioService.buscarPaciente(parametro,0,2).subscribe((data:Paciente[])=>{
       this.service.cambiarBusqueda(data);
     });
-    this.usuarioService.buscarMedicamento(parametro).subscribe((data:medicamentos[])=>{
+    this.usuarioService.buscarMedicamento(parametro,0,4).subscribe((data:medicamentos[])=>{
       this.service.cambiarMedicamento(data);
     });
   }
@@ -53,12 +57,13 @@ param;
 
   }
 
-  mostrar(){
-    this.usuarioService.getTodo().subscribe((data: User[]) => {
-      this.usuario = data;
+  mostrar(parametro, salto, tomar){
 
+    this.usuarioService.buscar(parametro, 5, 4).subscribe((data:User[])=>{
+      this.usuario=data;
     });
-    this.class=this.class+' '+'enable'
+    this.class=this.class2;
+    this.class2=this.class+' disabled'
   }
 
 }

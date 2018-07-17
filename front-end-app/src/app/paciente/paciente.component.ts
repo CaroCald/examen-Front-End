@@ -11,7 +11,8 @@ import {ServicioApp} from "../Servicios/servicio.app";
 })
 export class PacienteComponent implements OnInit {
   paciente: Paciente[];
-  class = 'page-item';
+  class='page-item';
+  class2='page-item';
 
   constructor(private http: HttpClient, private pacienteService:PacienteServiceApp,
               private service:ServicioApp) {
@@ -19,7 +20,7 @@ export class PacienteComponent implements OnInit {
 
   ngOnInit() {
     this.cargar();
-    this.class = this.class + ' ' + 'disable';
+    this.class=this.class+' disabled';
     this.escucharCambiosBusqueda();
   }
   escucharCambiosBusqueda(){
@@ -30,12 +31,16 @@ export class PacienteComponent implements OnInit {
     this.http.get<Paciente[]>('http://localhost:3000/siguientePaciente').subscribe((data: Paciente[]) => {
       this.paciente = data;
     });
+    this.class=this.class+' disabled';
+    this.class2='page-item';
   }
 
   cargarMas() {
     this.http.get<Paciente[]>('http://localhost:3000/dosaciente').subscribe((data: Paciente[]) => {
       this.paciente = data;
     });
+    this.class=this.class2;
+    this.class2=this.class+' disabled'
   }
   retomarBusqueda(parametro){
     this.pacienteService.buscar(parametro).subscribe((data:Paciente[])=>{

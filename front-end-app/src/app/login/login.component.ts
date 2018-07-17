@@ -19,17 +19,19 @@ verificar;
   ngOnInit() {
 
   }
-  ingresar(){
+  ingresar(parametro){
 
-    this.http.get<User[]>('http://localhost:3000/cincoUsuarios').subscribe((data: User[]) => {
+    console.log('http://localhost:3000/usuario/'+parametro);
+    this.http.get<User[]>('http://localhost:3000/usuario/'+parametro).subscribe((data: User[]) => {
       this.usuario = data;
-      this.verificar=data[0].nombreUsuario;
+      console.log(data.map(datos=>datos.nombreUsuario));
+      this.verificar=data.map(datos=>datos.nombreUsuario);
     });
-    if(this.verificar===this.nombre){
+    console.log(this.verificar);
+    if(this.usuario[0].correo===this.correo){
       let url= ['/principal'];
       this._router.navigate(url);
       this.service.emitirCambio(this.verificar);
-
     }
     else{
 

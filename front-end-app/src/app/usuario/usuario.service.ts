@@ -18,14 +18,14 @@ export class UsuarioService {
   getTodo(): Observable<User[]>{
     return this.http.get<User[]>('http://localhost:3000/cincoSiguientes');
   }
-  buscar(parametro):Observable<User[]>{
-    return this.http.get<User[]>('http://localhost:3000/buscaruser/'+parametro);
+  buscar(parametro, salto, tomar):Observable<User[]>{
+    return this.http.get<User[]>('http://localhost:3000/buscarskip/'+parametro+'/'+salto+'/'+tomar);
   }
-  buscarPaciente(parametro):Observable<Paciente[]>{
-    return this.http.get<Paciente[]>('http://localhost:3000/buscar/'+parametro);
+  buscarPaciente(parametro, salto, tomar):Observable<Paciente[]>{
+    return this.http.get<Paciente[]>('http://localhost:3000/buscar/'+parametro+'/'+salto+'/'+tomar);
   }
-  buscarMedicamento(parametro):Observable<medicamentos[]>{
-    return this.http.get<medicamentos[]>('http://localhost:3000/buscarMed/'+parametro);
+  buscarMedicamento(parametro, salto, tomar):Observable<medicamentos[]>{
+    return this.http.get<medicamentos[]>('http://localhost:3000/buscarMed/'+parametro+'/'+salto+'/'+tomar);
   }
 
 }
