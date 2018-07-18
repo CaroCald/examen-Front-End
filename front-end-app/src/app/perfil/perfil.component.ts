@@ -3,6 +3,7 @@ import {User} from "../usuario/usuario.service";
 import {HttpClient} from "@angular/common/http";
 import {medicamentos} from "../medicamento/medicamento.servicio";
 import {Paciente} from "../paciente/paciente.service";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-perfil',
@@ -13,15 +14,15 @@ export class PerfilComponent implements OnInit {
 
   usuario:User[];
   medicamento:medicamentos[];
-  constructor(private http: HttpClient) { }
+  detalleUsuario = {
+    nombre: '',
+    url: ''
+  };
+  constructor(private http: HttpClient, private cookieService: CookieService) { }
 
   ngOnInit() {
-    this.http.get<User[]>('http://localhost:3000/cincoUsuarios').subscribe((data: User[]) => {
-      this.usuario = data;
-    });
-    this.http.get<medicamentos[]>('http://localhost:3000/cincoMedicamentos').subscribe((data: medicamentos[]) => {
-      this.medicamento = data;
-    });
+    this.detalleUsuario.nombre = this.cookieService.get('user');
+    this.detalleUsuario.url = this.cookieService.get('url');
   }
 
 }

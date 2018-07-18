@@ -4,7 +4,6 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Paciente, PacienteServiceApp} from "../paciente/paciente.service";
 import {ServicioApp} from "../Servicios/servicio.app";
-import {medicamentos} from "../medicamento/medicamento.servicio";
 
 @Component({
   selector: 'app-usuario',
@@ -52,11 +51,9 @@ export class UsuarioComponent implements OnInit {
 
 
   seleccionar(indice) {
-
-    let url = ['/transferir'];
+    let url = ['/seleccion'];
     this._router.navigate(url);
-    console.log(indice);
-
+    this.service.setIdUsuario(indice);
   }
 
   mostrar(parametro) {

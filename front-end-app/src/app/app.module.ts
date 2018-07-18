@@ -19,7 +19,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { PacienteServiceApp } from './paciente/paciente.service';
 import { UsuarioService } from './usuario/usuario.service';
 import {ServicioApp} from "./Servicios/servicio.app";
-
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +44,7 @@ import {ServicioApp} from "./Servicios/servicio.app";
       }
     )
   ],
-  providers: [PacienteServiceApp, UsuarioService, ServicioApp],
+  providers: [PacienteServiceApp, UsuarioService, ServicioApp, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

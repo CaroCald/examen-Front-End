@@ -6,7 +6,7 @@
         [nombre]="info.nombre"
         [usadoPara]="info.usadoPara"
       ></app-card-medicamento>
-      <button type="button" class="btn btn-secondary" (click)="seleccionar()">Pedir Transferenca</button>
+      <button type="button" class="btn btn-secondary" (click)="seleccionar(info.id)">Pedir Transferenca</button>
     </div>
   </div>
 </div>
@@ -14,10 +14,10 @@
 <nav aria-label="Page navigation example">
   <ul class="pagination justify-content-center">
     <li [class]="class">
-      <a class="page-link" (click)="cargar()" tabindex="-1" >Previous</a>
+      <a class="page-link"  tabindex="-1" >Previous</a>
     </li>
     <li class="page-item">
-      <a class="page-link" (click)="cargarMas()">Next</a>
+      <a class="page-link" >Next</a>
     </li>
   </ul>
 </nav>

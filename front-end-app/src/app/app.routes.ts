@@ -21,7 +21,7 @@ export const RUTAS_APP: Routes = [
     component: UsuarioComponent,
   },
   {
-    path: 'peticion',
+    path: 'seleccion',
       component: SeleccionTransferenciaComponent,
   },
 

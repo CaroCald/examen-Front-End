@@ -4,6 +4,7 @@ import {User} from "../usuario/usuario.service";
 import {HttpClient} from "@angular/common/http";
 import {ServicioApp} from "../Servicios/servicio.app";
 import {ServicioService} from "../Servicios/servicio.service";
+import {CookieService} from "ngx-cookie-service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +15,7 @@ usuario:User[];
 correo;
 nombre;
 verificar;
-  constructor(private _router:Router, private http: HttpClient, private service:ServicioApp) { }
+  constructor(private _router:Router, private http: HttpClient, private service:ServicioApp, private cookieService: CookieService ) { }
 
 
   ngOnInit() {
@@ -27,7 +28,9 @@ verificar;
       if(this.usuario[0].correo===this.correo){
         let url= ['/principal'];
         this._router.navigate(url);
-        this.service.emitirCambio(this.usuario[0].nombreUsuario);
+        this.cookieService.set( 'user', ''+this.usuario[0].nombreUsuario );
+        this.cookieService.set( 'url', ''+this.usuario[0].urlUsuario );
+        this.service.emitirCambio(this.usuario[0]);
       }
     });
 

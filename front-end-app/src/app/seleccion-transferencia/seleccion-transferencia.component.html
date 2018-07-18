@@ -3,25 +3,23 @@
   <div class="row">
     <div class="col-sm-6">
       <app-card-usuario
-        [urlImagen]="usuario[0].urlUsuario"
-        [nombre]="usuario[0].nombreUsuario"
+        [urlImagen]="detalleUsuario.url"
+        [nombre]="detalleUsuario.nombre"
       ></app-card-usuario>
     </div>
     <div class="col-sm-6">
       <app-card-paciente
-        [urlImagen]="paciente[0].urlPaciente"
-        [nombre]="paciente[0].nombre"
-        [apellido]="paciente[0].apellido"
-        [edad]="paciente[0].edad"
+        [urlImagen]="detallePaciente.url"
+        [nombre]="detallePaciente.nombre"
+        [apellido]="detallePaciente.apellido"
+        [edad]="detallePaciente.edad"
       ></app-card-paciente>
     </div>
   </div>
 </div>
 
 
-
-
-<div class="container" style="margin-bottom: 20px">
+<div class="container" style="margin-bottom: 20px; margin-top: 30px">
   <div class="row" style="margin-left: 12px">
     <div class="col-sm-3" *ngFor="let info of medicamento" style="margin-bottom: 15px" >
       <div class="card" style="width: 15rem">
@@ -36,7 +34,7 @@
             </div>
           </div>
         </div>
-        <button type="button" class="btn btn-secondary" (click)="seleccionar()">Pedir Trasnferencia</button>
+        <button type="button" class="btn btn-secondary" (click)="seleccionar(info.id)">Pedir Trasnferencia</button>
       </div>
     </div>
   </div>

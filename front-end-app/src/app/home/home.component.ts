@@ -12,7 +12,8 @@ import {ServicioApp} from "../Servicios/servicio.app";
 export class HomeComponent implements OnInit {
 mostrar=false;
 usuario:User[];
-variable;
+variable='';
+url='';
 
   constructor(private http: HttpClient, private _router: Router, private _usuarioService:ServicioApp ) { }
 
@@ -21,7 +22,8 @@ variable;
   }
 
   escucharCambiosHome() {
-    this._usuarioService.emitircambioAuto.subscribe((variable) => {this.variable= variable;});
+    this._usuarioService.emitircambioAuto.subscribe((variable:User) => {this.variable= variable.nombreUsuario;
+    this.url=variable.urlUsuario});
     }
 
 

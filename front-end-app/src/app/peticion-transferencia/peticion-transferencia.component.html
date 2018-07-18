@@ -3,16 +3,16 @@
   <div class="row">
     <div class="col-sm-6">
       <app-card-usuario
-        [urlImagen]="usuario[0].urlUsuario"
-        [nombre]="usuario[0].nombreUsuario"
+        [urlImagen]="detalleUsuario.url"
+        [nombre]="detalleUsuario.nombre"
       ></app-card-usuario>
     </div>
     <div class="col-sm-6">
       <h3>Item de Seleccion</h3>
       <app-card-medicamento
-        [urlImagen]="medicamento[0].urlMedicamento"
-        [nombre]="medicamento[0].nombre"
-        [usadoPara]="medicamento[0].usadoPara"
+        [urlImagen]="detalleMedicamento.ur"
+        [nombre]="detalleMedicamento.nombre"
+        [usadoPara]="detalleMedicamento.usuadoPara"
       ></app-card-medicamento>
     </div>
   </div>
@@ -25,7 +25,7 @@
         [nombre]="info.nombre"
         [usadoPara]="info.usadoPara"
       ></app-card-medicamento>
-      <button type="button" class="btn btn-secondary" (click)="seleccionar()">Pedir Transferencia</button>
+      <button type="button" class="btn btn-secondary" (click)="seleccionar(info.id)">Pedir Transferencia</button>
     </div>
   </div>
 </div>

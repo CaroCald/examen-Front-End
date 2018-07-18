@@ -27,8 +27,9 @@ export class MedicamentoComponent implements OnInit {
     });
   }
 
-  seleccionar() {
-    let url=['/peticion'];
+  seleccionar(id) {
+    let url=['/transferir'];
+    this.service.setIdMedicamento(id);
     this.router.navigate(url);
   }
 }
