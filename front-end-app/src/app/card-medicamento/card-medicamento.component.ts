@@ -14,13 +14,10 @@ export class CardMedicamentoComponent implements OnInit {
   @Input()usadoPara;
   medicamento:medicamentos[];
 
-  class='page-item';
-
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
 
-    this.class=this.class+' '+'disable';
 
   }
 

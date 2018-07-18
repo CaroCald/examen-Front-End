@@ -13,28 +13,11 @@ export class CardUsuarioComponent implements OnInit {
 @Input() nombre: string;
 
   usuario:User[];
-indice;
 
-class='page-item';
   constructor(private http: HttpClient, private _router: Router, private usuarioService:UsuarioService) { }
 
   ngOnInit() {
-  this.primero();
-  this.class=this.class+' '+'disable'
-  }
-    primero(){
-    this.usuarioService.cargarPrimerosUsuario().subscribe((data: User[]) => {
-      this.usuario = data;
-    });
-  }
 
-
-
-  mostrar(){
-    this.usuarioService.getTodo().subscribe((data: User[]) => {
-      this.usuario = data;
-    });
-    this.class=this.class+' '+'enable'
   }
 
 }

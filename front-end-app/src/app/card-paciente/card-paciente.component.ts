@@ -10,7 +10,6 @@ import { HttpClient } from '@angular/common/http';
 export class CardPacienteComponent implements OnInit {
 
   paciente:Paciente[];
-  class='page-item';
 
   constructor(private http: HttpClient) { }
   @Input() urlImagen: string;
@@ -18,11 +17,8 @@ export class CardPacienteComponent implements OnInit {
   @Input() apellido: string;
   @Input() edad: number;
   ngOnInit() {
-    this.class=this.class+' '+'disable'
 
   }
 
-  seleccionar(){
 
-  }
 }

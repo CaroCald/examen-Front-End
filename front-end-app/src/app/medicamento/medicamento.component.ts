@@ -18,30 +18,16 @@ export class MedicamentoComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.class = this.class + ' ' + 'disable';
-    this.cargar();
     this.escucharCambiosBusqueda();
   }
 
-  cargar() {
-    this.http.get<medicamentos[]>('http://localhost:3000/cincoMedicamentos').subscribe((data: medicamentos[]) => {
-      this.medicamento = data;
-    });
-  }
-
-  cargarMas() {
-    this.http.get<medicamentos[]>('http://localhost:3000/siguieneMedicamentos').subscribe((data: medicamentos[]) => {
-      this.medicamento = data;
-    });
-  }
   escucharCambiosBusqueda(){
     this.service.emitirMedicamento.subscribe((autos) => {this.medicamento= autos;
     });
   }
 
   seleccionar() {
-
     let url=['/peticion'];
     this.router.navigate(url);
   }

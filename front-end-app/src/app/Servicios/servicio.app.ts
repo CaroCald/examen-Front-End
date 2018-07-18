@@ -5,7 +5,7 @@ import {medicamentos} from "../medicamento/medicamento.servicio";
 @Injectable()
 export class ServicioApp {
   mostrar;
-  mostrarPaciente;
+  mostrarPaciente:Paciente[];
   mostrarMedicamento;
   emitircambioAuto:EventEmitter<String>=new EventEmitter();
   emitirPaciente:EventEmitter<Paciente[]>=new EventEmitter();
@@ -16,7 +16,7 @@ export class ServicioApp {
     this.mostrar=cambioAuto;
     this.emitircambioAuto.emit(cambioAuto);
   }
-  cambiarBusqueda(busqueda: Paciente[]){
+  cambiarBusqueda(busqueda:Paciente[]){
     this.mostrarPaciente=busqueda;
     this.emitirPaciente.emit(busqueda);
   }

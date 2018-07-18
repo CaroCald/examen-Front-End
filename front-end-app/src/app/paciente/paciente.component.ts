@@ -21,24 +21,25 @@ export class PacienteComponent implements OnInit {
   ngOnInit() {
     this.cargar();
     this.class=this.class+' disabled';
+    this.paciente=this.service.mostrarPaciente;
     this.escucharCambiosBusqueda();
   }
   escucharCambiosBusqueda(){
-    this.service.emitirPaciente.subscribe((autos) => {this.paciente= autos;
+    this.service.emitirPaciente.subscribe((paciente:Paciente[]) => {this.paciente= paciente;
     });
   }
   cargar() {
-    this.http.get<Paciente[]>('http://localhost:3000/siguientePaciente').subscribe((data: Paciente[]) => {
-      this.paciente = data;
-    });
+
+    this.escucharCambiosBusqueda();
     this.class=this.class+' disabled';
     this.class2='page-item';
   }
 
   cargarMas() {
-    this.http.get<Paciente[]>('http://localhost:3000/dosaciente').subscribe((data: Paciente[]) => {
+    /*this.http.get<Paciente[]>('http://localhost:3000/dosaciente').subscribe((data: Paciente[]) => {
       this.paciente = data;
-    });
+    });*/
+
     this.class=this.class2;
     this.class2=this.class+' disabled'
   }

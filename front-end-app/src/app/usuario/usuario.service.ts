@@ -11,21 +11,14 @@ export class UsuarioService {
 
   }
   usuario:User[];
-  cargarPrimerosUsuario(): Observable<User[]>{
-     return this.http.get<User[]>('http://localhost:3000/cincoUsuarios');
-
-  }
-  getTodo(): Observable<User[]>{
-    return this.http.get<User[]>('http://localhost:3000/cincoSiguientes');
-  }
   buscar(parametro, salto, tomar):Observable<User[]>{
-    return this.http.get<User[]>('http://localhost:3000/buscarskip/'+parametro+'/'+salto+'/'+tomar);
+    return this.http.get<User[]>('http://localhost:3000/prueba/'+parametro+'/'+salto+'/'+tomar);
   }
-  buscarPaciente(parametro, salto, tomar):Observable<Paciente[]>{
-    return this.http.get<Paciente[]>('http://localhost:3000/buscar/'+parametro+'/'+salto+'/'+tomar);
-  }
-  buscarMedicamento(parametro, salto, tomar):Observable<medicamentos[]>{
-    return this.http.get<medicamentos[]>('http://localhost:3000/buscarMed/'+parametro+'/'+salto+'/'+tomar);
+  buscarMedicamento(parametro, salto, tomar):Observable<Paciente[]>{
+
+    let url='http://localhost:3000/pruebaPaciente/'+parametro+'/'+salto+'/'+tomar;
+    console.log(url);
+    return this.http.get<Paciente[]>(url);
   }
 
 }
@@ -34,4 +27,5 @@ export interface User{
   nombreUsuario:string,
   urlUsuario:any,
   correo: any;
+  userPaciente:Paciente[]
 }

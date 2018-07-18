@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {User} from "../usuario/usuario.service";
 import {HttpClient} from "@angular/common/http";
 import {ServicioApp} from "../Servicios/servicio.app";
+import {ServicioService} from "../Servicios/servicio.service";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,21 +22,16 @@ verificar;
   }
   ingresar(parametro){
 
-    console.log('http://localhost:3000/usuario/'+parametro);
     this.http.get<User[]>('http://localhost:3000/usuario/'+parametro).subscribe((data: User[]) => {
       this.usuario = data;
-      console.log(data.map(datos=>datos.nombreUsuario));
-      this.verificar=data.map(datos=>datos.nombreUsuario);
+      if(this.usuario[0].correo===this.correo){
+        let url= ['/principal'];
+        this._router.navigate(url);
+        this.service.emitirCambio(this.usuario[0].nombreUsuario);
+      }
     });
-    console.log(this.verificar);
-    if(this.usuario[0].correo===this.correo){
-      let url= ['/principal'];
-      this._router.navigate(url);
-      this.service.emitirCambio(this.verificar);
-    }
-    else{
 
-    }
+
 
   }
 

@@ -17,17 +17,12 @@ variable;
   constructor(private http: HttpClient, private _router: Router, private _usuarioService:ServicioApp ) { }
 
   ngOnInit() {
-    this.http.get<User[]>('http://localhost:3000/cincoUsuarios').subscribe((data: User[]) => {
-      this.usuario = data;
-    });
-    this.escucharCambiosAuto();
+    this.escucharCambiosHome();
   }
 
-  escucharCambiosAuto() {
-    this._usuarioService.emitircambioAuto.subscribe((autos) => {this.variable= autos;
-    });
-
-  }
+  escucharCambiosHome() {
+    this._usuarioService.emitircambioAuto.subscribe((variable) => {this.variable= variable;});
+    }
 
 
 
