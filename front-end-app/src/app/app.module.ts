@@ -20,6 +20,8 @@ import { PacienteServiceApp } from './paciente/paciente.service';
 import { UsuarioService } from './usuario/usuario.service';
 import {ServicioApp} from "./Servicios/servicio.app";
 import { CookieService } from 'ngx-cookie-service';
+import { PeticionEnEsperaComponent } from './peticion-en-espera/peticion-en-espera.component';
+import { PeticionPorAceptarComponent } from './peticion-por-aceptar/peticion-por-aceptar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,9 @@ import { CookieService } from 'ngx-cookie-service';
     PacienteComponent,
     PeticionTransferenciaComponent,
     SeleccionTransferenciaComponent,
-    PerfilComponent
+    PerfilComponent,
+    PeticionEnEsperaComponent,
+    PeticionPorAceptarComponent
   ],
   imports: [
     BrowserModule, FormsModule, HttpClientModule,

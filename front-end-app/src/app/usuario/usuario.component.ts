@@ -53,6 +53,7 @@ export class UsuarioComponent implements OnInit {
   seleccionar(indice) {
     let url = ['/seleccion'];
     this._router.navigate(url);
+    console.log(indice);
     this.service.setIdUsuario(indice);
   }
 

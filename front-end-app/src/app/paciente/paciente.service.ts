@@ -29,7 +29,8 @@ export interface Paciente {
   hijos: number,
   tieneSeguro: any,
   urlPaciente: string,
-  pacienteId: number
+  pacienteId: Paciente[];
   medicamentoId:medicamentos[];
+
 }
 
